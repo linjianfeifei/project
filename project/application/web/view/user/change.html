@@ -1,0 +1,107 @@
+{extend name="public/base"}
+
+{block name="content"}
+<!--内容-->
+
+
+<div class="container" style="padding-top: 50px;padding-bottom: 100px">
+
+    <div class="row">
+        <div class="col-md-8">
+            <!--<div class="alert alert-success" role="alert">个人信息</div>-->
+            <div class="page-header alert alert-success">
+                <h2>个人中心 <small>信息修改</small></h2>
+            </div>
+
+            <article class="cl pd-20">
+
+                {volist name="list" id="vo"}
+                <form name="myform" action="{:url('user/editUser')}" method="post">
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>账号：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <input  type="text" class="input-text" value="{$vo.name}" placeholder="" id="name" name="name" readonly style="border: none">
+                        </div>
+                    </div>
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>新密码：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <input type="password" class="input-text" autocomplete="off" value="{$vo.password}"  placeholder="密码为6位" id="password" name="password">
+                        </div>
+                    </div>
+
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>真实姓名：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <input type="text" class="input-text" placeholder="请输入真实姓名" name="realname" id="realname" value="{$vo.realname}">
+                        </div>
+                    </div>
+
+                    <div class="row cl">
+                        <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>邮箱：</label>
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <input type="text" class="input-text" placeholder="@" name="email" id="email" value="{$vo.email}" readonly style="border: none">
+                        </div>
+                    </div>
+
+                    <div style="float: right;padding-right: 502px;padding-top: 10px">
+                       <!--<button class="glyphicon glyphicon-ok" name="mybut" type="submit"style="padding: 0px;margin: 0px;width: 50px;height: 32px;border: 0;float: left;left: 320px!important;"></button>-->
+                       <button class="btn btn-success" type="submit">确认</button>
+
+                    </div>
+                </form>
+                {/volist}
+            </article>
+
+        </div>
+
+        {eq name="$Think.session.vip" value="0"}
+        <div class="col-md-4">
+            <div style="padding-top: 40px">
+                <div class="alert alert-info" role="alert" >充值中心</div>
+                <div class="jumbotron">
+                    <form action="{:url('userVip/index')}" method="post">
+                        请选择会员时长<br /><br />
+                        <label><input name="time" type="radio" value="1" />1个月 = 100元</label><br>
+                        <label><input name="time" type="radio" value="3" />3个月 = 300元</label><br>
+                        <label><input name="time" type="radio" value="6" />6个月 = 600元</label><br>
+                        <label><input name="time" type="radio" value="12" />12个月 = 1200元</label><br>
+                        <button class="btn btn-success" type="submit" style="margin-top: 10px">确认</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {/eq}
+
+        {eq name="$Think.session.vip" value="1"}
+        <div class="col-md-4">
+            <div style="padding-top: 40px">
+                <div class="alert alert-info" role="alert" >充值中心</div>
+                <div class="jumbotron">
+                    <form action="{:url('userVip/money')}" method="post">
+                        {volist name="vip" id="vo"}
+                        <input name="end_time_old" type="hidden" value="{$vo.end_time}" />
+                        <input name="old_time" type="hidden" value="{$vo.time}" />
+                        到期日期：{$vo.end_time}<br>
+                        {/volist}
+                        <br>请选择续费会员时长<br /><br />
+                        <label><input name="time" type="radio" value="1个月" />1个月 = 100元</label><br>
+                        <label><input name="time" type="radio" value="3个月" />3个月 = 300元</label><br>
+                        <label><input name="time" type="radio" value="6个月" />6个月 = 600元</label><br>
+                        <label><input name="time" type="radio" value="12个月" />12个月 = 1200元</label><br>
+                        <button class="btn btn-success" type="submit" style="margin-top: 10px">确认</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {/eq}
+
+    </div>
+
+
+
+</div>
+
+{/block}
+
+

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__STATIC__/lib/respond.min.js"></script>
+    <![endif]-->
+    <link href="__STATIC__/static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/static/h-ui/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script><![endif]-->
+    <!-- Bootstrap -->
+    <link href="__STATIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>科技成果发布</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+<body>
+<div class="container" style="padding-top: 50px">
+
+    <div class="page-header alert alert-info"style="padding-left: 10px;">
+        <h1>发布 <small>科技成果发布</small></h1>
+    </div>
+
+    <article class="cl pd-20">
+        <form action="/webResult" method="post"   class="form form-horizontal" id="form-admin-add">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>发布成果用户：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    {eq name="$Think.session.role" value="1"}
+                    <input  type="text" style="background-color: #1ab394" class="input-text" value="{:session('userName')}(教授)" placeholder="" id="user_name" name="user_name" readonly>
+                    {/eq}
+                    {eq name="$Think.session.role" value="0"}
+                    <input  type="text" style="background-color: #e7e7e7" class="input-text" value="{:session('userName')}" placeholder="" id="user_name" name="user_name" readonly>
+                    {/eq}
+                </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>科技成果名称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" autocomplete="off" value=""  placeholder="科技成果名称" id="name" name="name">
+                </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>等级：</label>
+                <!--<div class="formControls col-xs-8 col-sm-9">-->
+                    <!--<input type="text" class="input-text" placeholder="等级" name="level" id="level" value="">-->
+                <!--</div>-->
+                <span class="select-box" style="width:150px;margin-left: 15px">
+						<select class="select" name="level" id="level">
+					        <option value="初级" >初级</option>
+					        <option value="中级" >中级</option>
+                            <option value="高级" >高级</option>
+                            <option value="特级" >特级</option>
+				        </select>
+                </span>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系电话：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="tel" class="input-text" autocomplete="off" value=""  placeholder="请输入真实联系电话" id="tel" name="tel">
+                </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>价格：  </label>
+                <!--<div class="formControls col-xs-8 col-sm-9">-->
+                    <!--<input type="text" class="input-text" placeholder="请输入合理价格" name="price" id="price" value="">-->
+                <!--</div>-->
+                <span class="select-box" style="width:150px;margin-left: 15px">
+						<select class="select" name="price" id="price">
+                            <option value="1000" >1000</option>
+                            <option value="5000" >5000</option>
+                            <option value="10000" >10000</option>
+                            <option value="20000" >20000</option>
+                            <option value="30000" >30000</option>
+				        </select>
+				    </span>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>科技成果内容简介：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <textarea class="form-control" rows="3"placeholder="请输入成果内容简介" name="content" id="content" value=""></textarea>
+                </div>
+            </div>
+
+</div>
+
+
+
+<div class="row cl">
+    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+        <input class="btn btn-success" type="submit" value="提交" id="submit">
+        <input class="btn btn-danger" type="reset" value="重置" >
+    </div>
+</div>
+</form>
+
+
+</article>
+</div>
+<div class="footer" style="margin-top: 50px">菲菲企业服务平台_www.feifei.com</div>
+</div>
+
+
+
+<script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.js"></script>
+<!--<script type='text/javascript' src='/static/base.js'></script>-->
+{js href="/static/js/base.js" /}
+<script type="text/javascript" src="__STATIC__/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__STATIC__/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+
+
+
+<script>
+
+    $(function(){
+
+        //防止用户无更新提交,只有表中数据有变化时才允许提交
+        $("form").children().change(function(){
+            $("#submit").removeClass('disabled');
+        });
+
+
+    })
+</script>
+</body>
+</html>

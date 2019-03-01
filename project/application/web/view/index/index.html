@@ -1,0 +1,128 @@
+﻿{extend name="public/base"}
+
+{block name="content"}
+<!--内容-->
+<div id="myCarousel" class="carousel slide" style="margin-top: 20px">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="__STATIC__/img/timg.jpg" style="height: 350px;width:100%" alt="First slide">
+        </div>
+        <div class="item">
+            <img src="__STATIC__/img/timg.jpg" style="height: 350px;width:100% " alt="Second slide">
+        </div>
+        <div class="item">
+            <img src="__STATIC__/img/timg.jpg" style="height: 350px;width:100% " alt="Third slide">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container" style="padding-top: 40px">
+    <div class="row">
+        <div class="col-md-6">
+            <div style="float: left">
+            <img src="__STATIC__/img/9.png" style="height: 200px;width: 200px" alt="..." class="img-circle">
+            </div>
+            <div style="padding-left: 270px;padding-top: 40px">
+                <a style="color: white" href="{:url('user/adminAdd')}"><button type="button" class="btn btn-success" style="width: 150px;height: 40px" >普通用户注册</button></a>
+            </div>
+            <div style="padding-left: 270px;padding-top: 50px">
+                <a style="color: white" href="{:url('professor/adminAdd')}"><button type="button" class="btn btn-success" style="width: 150px;height: 40px" >教授用户注册</button></a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div style="float: left">
+            <img src="__STATIC__/img/10.png"  style="height: 200px;width: 200px" alt="..." class="img-circle">
+            </div>
+            <div style="padding-left: 270px;padding-top: 40px">
+                <a style="color: white" href="{:url('result/adminAdd')}"><button type="button" class="btn btn-success" style="width: 150px;height: 40px" >发布科技成果</button></a>
+            </div>
+            <div style="padding-left: 270px;padding-top: 50px">
+                <a style="color: white" href="{:url('need/adminAdd')}"><button type="button" class="btn btn-success" style="width: 150px;height: 40px" >发布科技需求</button></a>            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 70px;margin-bottom: 40px">
+<div class="jumbotron">
+    <h2>science and technology</h2>
+    <p>
+        &nbsp;&nbsp; 科技的本质：发现或发明事物之间的联系，各种物质通过这种联系组成特定的系统来实现特定的功能。<br>
+        <br>
+        &nbsp;&nbsp; 科学解决理论问题，技术解决实际问题。科学要解决的问题，是发现自然界中确凿的事实与现象之间的关系，并建立理论把事实与现象联系起来；技术的任务则是把科学的成果应用到实际问题中去。科学主要是和未知的领域打交道，其进展，尤其是重大的突破，是难以预料的；技术是在相对成熟的领域内工作，可以做比较准确的规划。
+    </p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">go</a></p>
+</div>
+</div>
+
+<div class="container" style="padding-top: 40px">
+<div class="row ">
+    <div class="col-xs-6 col-md-3">
+        <a  class="thumbnail">
+            <img src="__STATIC__/img/1.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a  class="thumbnail">
+            <img src="__STATIC__/img/2.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a class="thumbnail">
+            <img src="__STATIC__/img/3.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a  class="thumbnail">
+            <img src="__STATIC__/img/4.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a class="thumbnail">
+            <img src="__STATIC__/img/5.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a class="thumbnail">
+            <img src="__STATIC__/img/6.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a class="thumbnail">
+            <img src="__STATIC__/img/7.png" alt="...">
+        </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <a class="thumbnail">
+            <img src="__STATIC__/img/8.png" alt="...">
+        </a>
+    </div>
+</div>
+</div>
+
+
+<div class="xx" style="position: fixed;right: 204px;bottom: 65px;font-size: 24px;" onclick="close_box()" id="close_box_id">x</div>
+<div style="position: fixed;right: 0;bottom: 10px;height: 140px;width:200px;border: solid 1px red" id="box_img">
+    <img src="__STATIC__/img/logo.jpg">
+    <!--<a>sdfsdafasdfasd</a>-->
+</div>
+
+{/block}
+

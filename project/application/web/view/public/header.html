@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{$title|default='首页_欢迎来到科技成果转换平台'}</title>
+    <meta name="keywords" content="{$keywords|default='首页_前台'}">
+    <meta name="description" content="{$desc|default='首页_前台'}">
+
+    <!-- Bootstrap -->
+    <link href="__STATIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .common_c {
+            display: flex;
+            flex-direction: column;
+        }
+
+       .common_r {
+            display: flex;
+            flex-direction: row;
+        }
+
+
+        .user_one {
+            height: 100px;
+            padding: 10px;
+        }
+
+        .user_name {
+            font-size: 25px;
+            max-width: 160px;
+            color: lightskyblue;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .user_time {
+            font-size: 11px;
+            margin-top: 2px;
+            max-width: 160px;
+        }
+
+        .comment_ {
+            margin-top: 8px;
+            font-size: 18px;
+            word-wrap: break-word
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <!--//页头-->
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">欢迎来到科技成果转换平台</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{:url('/web')}">首页 <span class="sr-only">(current)</span></a></li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+                                {eq name="$Think.session.vip" value="1"}
+
+                                {eq name="$Think.session.role" value="1"}
+                                <a style="padding-right: 0px;padding-top: 16px" href="{:url('professorVip/power')}"><span class="glyphicon glyphicon-king"  ></span></a>
+
+                                {/eq}
+
+                                {eq name="$Think.session.role" value="0"}
+                                <a style="padding-right: 0px;padding-top: 16px" href="{:url('userVip/power')}"><span class="glyphicon glyphicon-king"  ></span></a>
+                                {/eq}
+
+                                {/eq}
+                            </li>
+
+                            <li class="dropDown dropDown_hover">
+
+                                {eq name="$Think.session.role" value="1"}
+                                <a href="{:url('professor/change')}" class="dropDown_A"> 教授用户</a>
+                                {/eq}
+                                {eq name="$Think.session.role" value="0"}
+                                <a href="{:url('user/change')}" class="dropDown_A"> 普通用户</a>
+                                {/eq}
+
+                            </li>
+
+                            <li class="dropDown dropDown_hover">
+
+                                <a href="#" class="dropDown_A"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;你好,{:session('userName')}</a>
+                            </li>
+                            {eq name="$Think.session.userName" value=""}
+                            <li><a href="{:url('user/login')}">请登录</a></li>
+                            <!--<li><a href="{:url('user/adminAdd')}">免费注册</a></li>-->
+                            {/eq}
+
+                            {eq name="$Think.session.role" value="1" }
+                            <li><a href="{:url('user/logout')}">退出</a></li>
+                            {/eq}
+                            {eq name="$Think.session.role" value="0" }
+                            <li><a href="{:url('user/logout')}">退出</a></li>
+                            {/eq}
+                            {eq name="$Think.session.role" value="2" }
+                            <li><a href="{:url('user/logout')}">退出</a></li>
+                            {/eq}
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+    <!--企业logo-->
+    <div class="row"  >
+        <div class="col-md-12">
+            <div style="float: left">
+                <img src="__STATIC__/img/logo.jpg" style="padding-bottom:20px;height: 150px ">
+            </div>
+            <div class="page-header"  style="float: left">
+                <h1 class="text-primary">企业服务平台 <small>科技成果转换服务平台</small></h1>
+            </div>
+
+            <!--<form action="{:url('Search/index')}" method="get">-->
+            <div class="input-group">
+                <!--<form name="myform" action="{:url('Result/search')}" method="get">-->
+                <form name="myform" action="{:url('Search/index')}" method="get">
+                    <div style="float: left;padding-left: 200px">
+                       <input style="float: left" type="text" class="form-control" name="search" placeholder="请输入关键字搜索" aria-describedby="basic-addon2">
+                    </div>
+                    <div style="float: left">
+                       <span class="input-group-addon" id="basic-addon2" style="padding: 0px;margin: 0px" >
+                       <button class="glyphicon glyphicon-search" name="mybut" type="submit"style="padding: 0px;margin: 0px;width: 50px;height: 32px;border: 0;float: left"></button>
+                       </span>
+                    </div>
+                </form>
+            </div>
+            <!--</form>-->
+
+        </div>
+    </div>
+    <!--导航-->
+    <div class="row" >
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li role="presentation" ><a href="{:url('/web')}">首页</a></li>
+                <li><a href="#">|</a></li>
+                <li role="presentation"><a href="{:url('/result_list')}">成果库</a></li>
+                <li><a href="#">|</a></li>
+                <li role="presentation"><a href="{:url('/need_list')}">需求库</a></li>
+                <li><a href="#">|</a></li>
+                <li role="presentation"><a href="{:url('/professor_list')}">服务资源</a></li>
+                <li><a href="#">|</a></li>
+                <li role="presentation"><a href="{:url('/paper_list')}">学术论文</a></li>
+                {eq name="$Think.session.role" value="1"}
+                <li><a href="#">|</a></li>
+                <li role="presentation"><a href="{:url('paper/add')}">学术论文</a></li>
+                {/eq}
+
+
+            </ul>
+        </div>
+    </div>
+</div>

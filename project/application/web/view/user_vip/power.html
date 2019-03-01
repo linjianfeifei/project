@@ -1,0 +1,93 @@
+{extend name="public/base"}
+
+{block name="content"}
+<!--内容-->
+
+
+<div class="container" style="padding-top: 50px;padding-bottom: 100px">
+
+    <div class="row">
+        <div class="col-md-8">
+            <!--<div class="alert alert-success" role="alert">个人信息</div>-->
+            <div class="page-header alert alert-success">
+                <h2>会员中心 <small>Vip特权</small></h2>
+            </div>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Vip特权一 ：
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            特殊标识
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Vip特权二 ：
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            发布内容置顶
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Vip特权三 ：
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            发布学术论文
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div style="padding-top: 40px">
+                <div class="alert alert-info" role="alert" >充值中心</div>
+                <div class="jumbotron">
+                    <form action="{:url('userVip/money')}" method="post">
+                        {volist name="list" id="vo"}
+                        <input name="end_time_old" type="hidden" value="{$vo.end_time}" />
+                        <input name="old_time" type="hidden" value="{$vo.time}" />
+                        到期日期：{$vo.end_time}<br>
+                        {/volist}
+                        <br>请选择续费会员时长<br /><br />
+                        <label><input name="time" type="radio" value="1个月" />1个月 = 100元</label><br>
+                        <label><input name="time" type="radio" value="3个月" />3个月 = 300元</label><br>
+                        <label><input name="time" type="radio" value="6个月" />6个月 = 600元</label><br>
+                        <label><input name="time" type="radio" value="12个月" />12个月 = 1200元</label><br>
+                        <button class="btn btn-success" type="submit" style="margin-top: 10px">确认</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+{/block}
+
+

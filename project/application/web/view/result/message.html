@@ -1,0 +1,146 @@
+{extend name="public/base"}
+
+{block name="content"}
+<!--内容-->
+
+
+<div class="container" style="padding-top: 50px;padding-bottom: 100px">
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="alert alert-success" role="alert">科技成果库</div>
+
+            <div class="Hui-article">
+                <article class="cl pd-20">
+                    {volist name="list" id="vo"}
+                    <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                        <tbody>
+                        <tr><th colspan="3">科技成果标题：{$vo.name}</th></tr>
+                        <tr><th>发布者：{$vo.user_name}</th><th>发布时间：{$vo.create_time}</th><th>开发程度要求：{$vo.level}</th></tr>
+                        <tr><th>价格：{$vo.price}</th><th colspan="2">联系方式：{$vo.tel}</th></tr>
+                        <tr><th colspan="3">科技需求概述：{$vo.content}</th></tr>
+                        <br>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div class="input-group">
+
+                        <form name="myform" action="{:url('ResultMessage/index')}" method="get">
+                            <div style="float: left;">
+                                <input type="hidden" name="id" value="{$vo.id}">
+                                <input type="hidden" name="name" value="{$vo.name}">
+                                <!--<input type="hidden" class="psi-select" onclick="selectTime()" value="{:date('Y-m-d H:i:s')}">-->
+                                <input style="float: left;width: 698px" type="text" class="form-control "  name="message" placeholder="点击发表评论~！" aria-describedby="basic-addon2">
+                            </div>
+
+                            <div style="float: left">
+                       <span class="input-group-addon" id="basic-addon2" style="padding: 0px;margin: 0px" >
+                       <button class="glyphicon glyphicon-ok" name="mybut" type="submit"style="padding: 0px;margin: 0px;width: 50px;height: 32px;border: 0;float: left"></button>
+                       </span>
+                            </div>
+                        </form>
+
+                    </div>
+                    {/volist}
+                </article>
+            </div>
+
+
+
+
+                <div>
+                    <article class="cl pd-20">
+                        {volist name="message" id="vo"}
+
+                        <div class="user_one common_r">
+                            <div class="name_comment common_r" style="padding-top: 10px">
+                        <div class="name_time common_c" >
+                            <div class="user_name">
+                                {$vo.user_name}
+                            </div>
+                            <div class="user_time">
+                                {$vo.createtime}
+                            </div>
+                        </div>
+                        <div style="margin-left: 10px;margin-top: 10px">：</div>
+                        <div class="comment_">
+                            {$vo.content}
+                        </div>
+                            </div>
+                        </div>
+                        <HR style="padding: 0;margin: 0">
+                        {/volist}
+                    </article>
+
+                </div>
+
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="alert alert-info" role="alert"><a href="{:url('/professor_list')}">教授推荐</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg">
+                    <thead>
+                    <tr class="text-c">
+                        <td>教授姓名</td>
+                        <td>学历</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="professor" id="pro"}
+                    <tr class="text-c">
+                        <td>{$pro.name}</td>
+                        <td>{$pro.education}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info" role="alert" style="margin-top: 80px"><a href="{:url('/result_list')}">最新科技成果</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                    <thead>
+                    <tr class="text-c">
+                        <td>成果名</td>
+                        <td>开发程度</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="result" id="res"}
+                    <tr class="text-c">
+                        <td>{$res.name}</td>
+                        <td>{$res.level}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info" role="alert" style="margin-top: 80px"><a href="{:url('/need_list')}">最新科技需求</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                    <thead>
+                    <tr class="text-c">
+                        <td>需求名</td>
+                        <td>程度要求</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="need" id="need"}
+                    <tr class="text-c">
+                        <td>{$need.name}</td>
+                        <td>{$need.level}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{/block}

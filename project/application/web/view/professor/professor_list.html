@@ -1,0 +1,100 @@
+{extend name="public/base"}
+
+{block name="content"}
+<!--内容-->
+
+
+<div class="container" style="padding-top: 50px;padding-bottom: 100px">
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="alert alert-success" role="alert">服务资源</div>
+
+            <div class="Hui-article">
+                <article class="cl pd-20">
+                    {volist name="list" id="vo"}
+                    <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                        <tbody>
+                        <tr><th colspan="3">教授：<a href="{:url('professor/message')}?id={$vo.id}&name={$vo.name}">{$vo.name}</a></th></tr>
+                        <tr><th>毕业院校：{$vo.school}</th><th>学位：{$vo.education}</th><th>个人邮箱：{$vo.email}</th></tr>
+                        <tr><th>联系方式：{$vo.tel}</th><th>所获最高荣誉：{$vo.honor}</th><th>行业：{$vo.industry}</th></tr>
+                        <tr><th colspan="3">个人简介：{$vo.content}</th></tr>
+                        <br>
+                        </tbody>
+                    </table>
+                    <br/>
+
+                    {/volist}
+                    <div style="text-align: center">{$list->render()}</div>
+                </article>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="alert alert-info" role="alert"><a href="{:url('/professor_list')}">教授推荐</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg">
+                    <thead>
+                    <tr class="text-c">
+                        <td>教授姓名</td>
+                        <td>学历</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="professor" id="pro"}
+                    <tr class="text-c">
+                        <td>{$pro.name}</td>
+                        <td>{$pro.education}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info" role="alert" style="margin-top: 80px"><a href="{:url('/result_list')}">最新科技成果</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                    <thead>
+                    <tr class="text-c">
+                        <td>成果名</td>
+                        <td>开发程度</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="result" id="res"}
+                    <tr class="text-c">
+                        <td>{$res.name}</td>
+                        <td>{$res.level}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info" role="alert" style="margin-top: 80px"><a href="{:url('/need_list')}">最新科技需求</a></div>
+            <div>
+                <table class="table table-border table-bordered table-bg table table-hover table table-striped">
+                    <thead>
+                    <tr class="text-c">
+                        <td>需求名</td>
+                        <td>程度要求</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="need" id="need"}
+                    <tr class="text-c">
+                        <td>{$need.name}</td>
+                        <td>{$need.level}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{/block}
